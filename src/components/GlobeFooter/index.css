@@ -1,0 +1,10 @@
+.global-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 16px;
+  text-align: center;
+  background-color: #efefef;
+}
+
+/*# sourceMappingURL=index.css.map */
