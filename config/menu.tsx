@@ -16,8 +16,8 @@ export const menus = [
     name: "题目",
   },
   {
-    name: "面试鸭",
-    path: "https://mianshiya.com",
+    name: "面试",
+    path: "https://interview.cannianyixin.cn",
     target: "_blank",
   },
   {

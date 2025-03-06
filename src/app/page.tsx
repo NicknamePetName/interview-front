@@ -1,9 +1,12 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Button } from "antd";
-
+import { listQuestionBankQuestionVoByPageUsingPost } from "@/api/questionBankQuestionController";
 
 export default function Home() {
+  listQuestionBankQuestionVoByPageUsingPost({}).then((res) => {
+    console.log(res);
+  });
   return (
     <div className={styles.page}>
       <main className={styles.main}>

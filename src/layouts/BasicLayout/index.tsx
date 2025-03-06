@@ -12,12 +12,12 @@ import React from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import GlobeFooter from "@/components/GlobeFooter";
+import GlobalFooter from "@/components/GlobalFooter";
 import "./index.css";
 import { menus } from "../../../config/menu";
 
 /**
- * 搜索条
+ * 搜索条目标
  * @constructor
  */
 const SearchInput = () => {
@@ -52,12 +52,16 @@ interface Props {
   children: React.ReactNode;
 }
 
+/**
+ * 全局通用布局
+ * @param children
+ * @constructor
+ */
 export default function BasicLayout({ children }: Props) {
   const pathname = usePathname();
-
   return (
     <div
-      id="basicLayout"
+      id="basic-layout"
       style={{
         height: "100vh",
         overflow: "auto",
@@ -117,19 +121,21 @@ export default function BasicLayout({ children }: Props) {
         headerTitleRender={(logo, title, _) => {
           return (
             <a>
-              {logo},{title}
+              {logo}
+              {title}
             </a>
           );
         }}
         // 渲染底部栏
         footerRender={() => {
-          return <GlobeFooter />;
+          return <GlobalFooter />;
         }}
         onMenuHeaderClick={(e) => console.log(e)}
         // 定义有哪些菜单
         menuDataRender={() => {
           return menus;
         }}
+        // 定义了菜单项如何渲染
         menuItemRender={(item, dom) => (
           <Link href={item.path || "/"} target={item.target}>
             {dom}
