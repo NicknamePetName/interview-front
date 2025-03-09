@@ -1,11 +1,11 @@
 "use client";
 import React, { useCallback, useEffect } from "react";
-import { Provider, useDispatch } from "react-redux";
+import { Provider } from "react-redux";
 import BasicLayout from "@/layouts/BasicLayout";
-import store, { AppDispatch } from "@/stores";
+import store from "@/stores";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { getLoginUserUsingGet } from "@/api/userController";
-import { setLoginUser } from "@/stores/loginUser";
+import AccessLayout from "@/access/AccessLayout";
 import "./globals.css";
 
 // import type { Metadata } from "next";
@@ -24,21 +24,23 @@ const InitLayout: React.FC<
     children: React.ReactNode;
   }>
 > = ({ children }) => {
-  const disPatch = useDispatch<AppDispatch>();
+  // const disPatch = useDispatch<AppDispatch>();
   // 初始化全局用户状态
   const doInitLoginUser = useCallback(async () => {
     const res = await getLoginUserUsingGet();
     if (res.data) {
       // 更新全局用户状态
     } else {
-      setTimeout(() => {
-        const testuser = {
-          userName: "测试登陆",
-          id: 1,
-          userAvatar: "https://www.code-nav.cn/logo.png",
-        };
-        disPatch(setLoginUser(testuser));
-      }, 3000);
+      // 模拟登陆,仅用于测试
+      // setTimeout(() => {
+      //   const testuser = {
+      //     userName: "测试登陆",
+      //     id: 1,
+      //     userAvatar: "/assets/logo.png",
+      //     userRole: ACCESS_ENUM.ADMIN,
+      //   };
+      //   disPatch(setLoginUser(testuser));
+      // }, 3000);
     }
   }, []);
 
@@ -61,7 +63,9 @@ export default function RootLayout({
         <AntdRegistry>
           <Provider store={store}>
             <InitLayout>
-              <BasicLayout>{children}</BasicLayout>
+              <BasicLayout>
+                <AccessLayout>{children}</AccessLayout>
+              </BasicLayout>
             </InitLayout>
           </Provider>
         </AntdRegistry>
