@@ -1,11 +1,12 @@
 "use client";
 import React, { useCallback, useEffect } from "react";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import BasicLayout from "@/layouts/BasicLayout";
-import store from "@/stores";
+import store, { AppDispatch } from "@/stores";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { getLoginUserUsingGet } from "@/api/userController";
 import AccessLayout from "@/access/AccessLayout";
+import { setLoginUser } from "@/stores/loginUser";
 import "./globals.css";
 
 // import type { Metadata } from "next";
@@ -24,12 +25,13 @@ const InitLayout: React.FC<
     children: React.ReactNode;
   }>
 > = ({ children }) => {
-  // const disPatch = useDispatch<AppDispatch>();
+  const disPatch = useDispatch<AppDispatch>();
   // 初始化全局用户状态
   const doInitLoginUser = useCallback(async () => {
     const res = await getLoginUserUsingGet();
     if (res.data) {
       // 更新全局用户状态
+      disPatch(setLoginUser(res.data));
     } else {
       // 模拟登陆,仅用于测试
       // setTimeout(() => {

@@ -5,5 +5,5 @@ import "./index.css";
  * @constructor
  */
 export default function BanksPage() {
-  return <div className="banks-page">题库页</div>;
+  return <div id="banks-page">题库页</div>;
 }

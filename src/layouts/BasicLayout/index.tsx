@@ -1,17 +1,21 @@
 "use client";
 import {GithubFilled, InfoCircleFilled, LogoutOutlined, QuestionCircleFilled, SearchOutlined,} from "@ant-design/icons";
 import {ProLayout} from "@ant-design/pro-components";
-import {Dropdown, Input} from "antd";
+import {Dropdown, Input, message} from "antd";
 import React from "react";
 import Image from "next/image";
-import {usePathname} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import Link from "next/link";
 import GlobalFooter from "@/components/GlobalFooter";
 import {menus} from "../../../config/menu";
-import {RootState} from "@/stores";
-import {useSelector} from "react-redux";
+import {AppDispatch, RootState} from "@/stores";
+import {useDispatch, useSelector} from "react-redux";
 import getAccessibleMenus from "@/access/menuAccess";
 import "./index.css";
+import {userLogoutUsingPost} from "@/api/userController";
+import {values} from "lodash-es";
+import {setLoginUser} from "@/stores/loginUser";
+import {DEFAULT_USER} from "@/constants/user";
 
 /**
  * 搜索条目标
@@ -56,9 +60,27 @@ interface Props {
  */
 export default function BasicLayout({ children }: Props) {
   const pathname = usePathname();
+  const [messageApi, contextHolder] = message.useMessage();
+
   // 当前登录用户
   const loginUser = useSelector((state: RootState) => state.loginUser);
-
+  const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
+  /**
+   * 用户注销
+   */
+  const userLogout = async () => {
+    try {
+      const res = await userLogoutUsingPost(values);
+      if (res.data) {
+        messageApi.success("已退出登录")
+        dispatch(setLoginUser(DEFAULT_USER));
+        router.push("/user/login");
+      }
+    } catch (e) {
+      messageApi.error("操作失败：" + (e as Error).message);
+    }
+  };
   return (
     <div
       id="basic-layout"
@@ -67,6 +89,7 @@ export default function BasicLayout({ children }: Props) {
         overflow: "auto",
       }}
     >
+      {contextHolder}
       <ProLayout
         title="亦忻面试刷题平台"
         layout="top"
@@ -86,6 +109,9 @@ export default function BasicLayout({ children }: Props) {
           size: "small",
           title: loginUser.userName || "亦忻",
           render: (props, dom) => {
+            if (!loginUser.id) {
+              return <Link href={"/user/login"}  style={{color: "rgba(0,0,0,0.45)"}}>{dom}</Link>;
+            }
             return (
               <Dropdown
                 menu={{
@@ -96,6 +122,12 @@ export default function BasicLayout({ children }: Props) {
                       label: "退出登录",
                     },
                   ],
+                  onClick: async (event: { key: React.Key }) => {
+                    const { key } = event;
+                    if (key === "logout") {
+                      await userLogout();
+                    }
+                  },
                 }}
               >
                 {dom}
@@ -136,11 +168,14 @@ export default function BasicLayout({ children }: Props) {
           return getAccessibleMenus(loginUser, menus);
         }}
         // 定义了菜单项如何渲染
-        menuItemRender={(item, dom) => (
-          <Link href={item.path || "/"} target={item.target}>
-            {dom}
-          </Link>
-        )}
+        menuItemRender={(item, dom) => {
+          const isCurrentPath = item.path && pathname === item.path;
+          return (
+              <Link href={item.path || "/"} target={item.target}>
+                {isCurrentPath ? <span className="selected">{dom}</span> : dom}
+              </Link>
+          )
+        }}
       >
         {children}
       </ProLayout>

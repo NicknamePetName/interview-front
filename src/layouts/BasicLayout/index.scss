@@ -1,7 +1,23 @@
-.ant-pro-layout .ant-pro-layout-content{
-  padding-bottom: 96px !important;
+#basic-layout {
+  .ant-pro-layout-container.css-dev-only-do-not-override-240cud {
+    background-image: url("/assets/background.png");
+    background-size: 100% 100%;
+
+    .ant-layout-header.css-dev-only-do-not-override-240cud.ant-pro-layout-header.ant-pro-layout-header-fixed-header-action.ant-pro-layout-header-top-menu.ant-pro-layout-header-header.css-dev-only-do-not-override-z2qojp {
+      background: rgba(243, 243, 243, 0.1);
+    }
+  }
+
+  .ant-pro-layout .ant-pro-layout-content{
+    padding-bottom: 96px !important;
+  }
+
+  .ant-pro-layout-top {
+    height: 100%;
+  }
+
+  .selected {
+    color: #1677FF;
+  }
 }
 
-.ant-pro-layout-top {
-  height: 100%;
-}

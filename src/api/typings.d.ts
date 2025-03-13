@@ -36,12 +36,16 @@ declare namespace API {
   };
 
   type BaseResponsePageQuestion_ = {
+    total: any;
+    records: never[];
     code?: number;
     data?: PageQuestion_;
     message?: string;
   };
 
   type BaseResponsePageQuestionBank_ = {
+    total: any;
+    records: never[];
     code?: number;
     data?: PageQuestionBank_;
     message?: string;
@@ -60,18 +64,22 @@ declare namespace API {
   };
 
   type BaseResponsePageQuestionBankVO_ = {
+    records: never[];
     code?: number;
     data?: PageQuestionBankVO_;
     message?: string;
   };
 
   type BaseResponsePageQuestionVO_ = {
+    records: never[];
     code?: number;
     data?: PageQuestionVO_;
     message?: string;
   };
 
   type BaseResponsePageUser_ = {
+    total: any;
+    records: never[];
     code?: number;
     data?: PageUser_;
     message?: string;
@@ -161,6 +169,7 @@ declare namespace API {
     searchText?: string;
     sortField?: string;
     sortOrder?: string;
+    title?: string;
     userId?: number;
   };
 
@@ -476,6 +485,7 @@ declare namespace API {
     searchText?: string;
     sortField?: string;
     sortOrder?: string;
+    title?: string;
     userId?: number;
   };
 
@@ -533,6 +543,7 @@ declare namespace API {
     description?: string;
     id?: number;
     picture?: string;
+    title?: string;
   };
 
   type QuestionBankVO = {
@@ -635,6 +646,7 @@ declare namespace API {
     userAccount?: string;
     userAvatar?: string;
     userName?: string;
+    userProfile?: string;
     userRole?: string;
   };
 
@@ -656,6 +668,7 @@ declare namespace API {
     sortField?: string;
     sortOrder?: string;
     unionId?: string;
+    userAccount?: string;
     userName?: string;
     userProfile?: string;
     userRole?: string;
