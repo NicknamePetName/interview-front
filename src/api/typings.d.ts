@@ -71,6 +71,7 @@ declare namespace API {
   };
 
   type BaseResponsePageQuestionVO_ = {
+    total: number;
     records: never[];
     code?: number;
     data?: PageQuestionVO_;

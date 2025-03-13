@@ -6,17 +6,19 @@
 }
 #admin-user-page .ant-pro-card.css-dev-only-do-not-override-240cud {
   background: rgba(234, 244, 249, 0.7);
-}
-#admin-user-page .ant-pro-card.css-dev-only-do-not-override-240cud .ant-table-cell {
-  background: rgb(229, 233, 250);
-  border-bottom: 1px solid #FFFFFF;
   text-align: center;
 }
 #admin-user-page .ant-pro-card.css-dev-only-do-not-override-240cud .ant-table-tbody {
   background: rgb(229, 233, 250);
+  cursor: pointer !important;
+}
+#admin-user-page .ant-pro-card.css-dev-only-do-not-override-240cud .ant-table-tbody .ant-table-cell {
+  border-bottom: 1px solid #FFFFFF;
+  text-align: center;
 }
 #admin-user-page .ant-pro-card.css-dev-only-do-not-override-240cud .ant-table-thead .ant-table-cell {
   background: rgb(219, 227, 255);
+  text-align: center;
 }
 
 /*# sourceMappingURL=index.css.map */

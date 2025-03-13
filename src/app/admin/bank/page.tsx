@@ -8,7 +8,7 @@ import {
 import { PlusOutlined } from "@ant-design/icons";
 import type { ActionType, ProColumns } from "@ant-design/pro-components";
 import { PageContainer, ProTable } from "@ant-design/pro-components";
-import {Button, message, Popconfirm, Space, Typography} from "antd";
+import { Button, message, Popconfirm, Space, Typography } from "antd";
 import React, { useRef, useState } from "react";
 import "./index.css";
 
@@ -120,15 +120,13 @@ const QuestionBankAdminPage: React.FC = () => {
             修改
           </Typography.Link>
           <Popconfirm
-              title="删除题目"
-              description="是否删除此题目？"
-              onConfirm={() => handleDelete(record)}
-              okText="Yes"
-              cancelText="No"
+            title="删除题目"
+            description="是否删除此题目？"
+            onConfirm={() => handleDelete(record)}
+            okText="Yes"
+            cancelText="No"
           >
-            <Typography.Link type="danger">
-              删除
-            </Typography.Link>
+            <Typography.Link type="danger">删除</Typography.Link>
           </Popconfirm>
         </Space>
       ),
@@ -144,7 +142,7 @@ const QuestionBankAdminPage: React.FC = () => {
           actionRef={actionRef}
           rowKey="id"
           search={{
-            labelWidth: 120,
+            labelWidth: "auto",
           }}
           toolBarRender={() => [
             <Button

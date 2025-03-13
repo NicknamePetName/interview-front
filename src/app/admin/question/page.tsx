@@ -68,13 +68,15 @@ const QuestionAdminPage: React.FC = () => {
       title: "标题",
       dataIndex: "title",
       valueType: "text",
+      width: 180,
     },
     {
       title: "内容",
       dataIndex: "content",
       valueType: "text",
       hideInSearch: true,
-      width: 240,
+      width: 200,
+      ellipsis: true,
       renderFormItem: (item, { fieldProps }, form) => {
         // 编写要渲染的表单项
         // value 和 onchange 会通过 form 自动注入
@@ -87,7 +89,8 @@ const QuestionAdminPage: React.FC = () => {
       dataIndex: "answer",
       valueType: "text",
       hideInSearch: true,
-      width: 640,
+      width: 440,
+      ellipsis: true,
       renderFormItem: (item, { fieldProps }, form) => {
         // 编写要渲染的表单项
         // value 和 onchange 会通过 form 自动注入
@@ -184,7 +187,7 @@ const QuestionAdminPage: React.FC = () => {
           actionRef={actionRef}
           rowKey="id"
           search={{
-            labelWidth: 120,
+            labelWidth: "auto",
           }}
           toolBarRender={() => [
             <Button

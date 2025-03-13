@@ -1,6 +1,5 @@
-#questions-page {
-  width: 100%;
-  margin-bottom: -65px;
+.question-table {
+  width: 1200px;
   // 输入框
   .ant-input-affix-wrapper.css-dev-only-do-not-override-240cud.ant-input-outlined {
     background: rgba(255, 255, 255, 0.5);
@@ -24,4 +23,13 @@
       }
     }
   }
+
+  .two-line-ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 限制显示两行 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
+

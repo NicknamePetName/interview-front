@@ -2,9 +2,8 @@ import { Tag } from "antd";
 import "./index.css";
 
 interface Props {
-    tagList?: string[];
+  tagList?: string[];
 }
-
 
 /**
  * 标签列表组件
@@ -12,15 +11,19 @@ interface Props {
  * @constructor
  */
 const TagList = (props: Props) => {
-    const { tagList = [] } = props;
+  const { tagList = [] } = props;
 
-    return (
-        <div className="tag-list">
-            {tagList.map((tag) => {
-                return <Tag key={tag} style={{background: "rgb(248,248,248)"}}>{tag}</Tag>;
-            })}
-        </div>
-    );
+  return (
+    <div className="tag-list">
+      {tagList.map((tag) => {
+        return (
+          <Tag key={tag} style={{ background: "rgb(248,248,248)" }}>
+            {tag}
+          </Tag>
+        );
+      })}
+    </div>
+  );
 };
 
 export default TagList;

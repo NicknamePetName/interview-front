@@ -1,12 +1,15 @@
 "use client";
 import CreateModal from "./components/CreateModal";
 import UpdateModal from "./components/UpdateModal";
-import {deleteUserUsingPost, listUserByPageUsingPost,} from "@/api/userController";
-import {PlusOutlined} from "@ant-design/icons";
-import type {ActionType, ProColumns} from "@ant-design/pro-components";
-import {PageContainer, ProTable} from "@ant-design/pro-components";
-import {Button, message, Popconfirm, Space, Typography,} from "antd";
-import React, {useRef, useState} from "react";
+import {
+  deleteUserUsingPost,
+  listUserByPageUsingPost,
+} from "@/api/userController";
+import { PlusOutlined } from "@ant-design/icons";
+import type { ActionType, ProColumns } from "@ant-design/pro-components";
+import { PageContainer, ProTable } from "@ant-design/pro-components";
+import { Button, message, Popconfirm, Space, Typography } from "antd";
+import React, { useRef, useState } from "react";
 import "./index.css";
 
 /**
@@ -25,7 +28,6 @@ const UserAdminPage: React.FC = () => {
   const actionRef = useRef<ActionType>();
   // 当前用户点击的数据
   const [currentRow, setCurrentRow] = useState<API.User>();
-
 
   /**
    * 删除节点
@@ -135,9 +137,7 @@ const UserAdminPage: React.FC = () => {
             okText="Yes"
             cancelText="No"
           >
-            <Typography.Link type="danger">
-              删除
-            </Typography.Link>
+            <Typography.Link type="danger">删除</Typography.Link>
           </Popconfirm>
         </Space>
       ),
@@ -152,7 +152,7 @@ const UserAdminPage: React.FC = () => {
           actionRef={actionRef}
           rowKey="id"
           search={{
-            labelWidth: 120,
+            labelWidth: 60,
           }}
           toolBarRender={() => [
             <Button

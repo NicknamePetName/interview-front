@@ -1,0 +1,29 @@
+@charset "UTF-8";
+.question-table {
+  width: 1200px;
+}
+.question-table .ant-input-affix-wrapper.css-dev-only-do-not-override-240cud.ant-input-outlined {
+  background: rgba(255, 255, 255, 0.5);
+}
+.question-table .ant-pro-card.css-dev-only-do-not-override-240cud {
+  background: rgba(234, 244, 249, 0.7);
+}
+.question-table .ant-pro-card.css-dev-only-do-not-override-240cud .ant-table-tbody {
+  background: rgb(229, 233, 250);
+  cursor: pointer !important;
+}
+.question-table .ant-pro-card.css-dev-only-do-not-override-240cud .ant-table-tbody .ant-table-cell {
+  border-bottom: 1px solid #FFFFFF;
+}
+.question-table .ant-pro-card.css-dev-only-do-not-override-240cud .ant-table-thead .ant-table-cell {
+  background: rgb(219, 227, 255);
+}
+.question-table .two-line-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 限制显示两行 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*# sourceMappingURL=index.css.map */
