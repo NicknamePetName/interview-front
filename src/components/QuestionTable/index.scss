@@ -24,6 +24,11 @@
     }
   }
 
+  th.ant-table-cell,
+  td.ant-table-cell {
+    padding-left: 15px !important;
+  }
+
   .two-line-ellipsis {
     display: -webkit-box;
     -webkit-line-clamp: 2; /* 限制显示两行 */

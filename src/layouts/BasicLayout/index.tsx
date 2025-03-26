@@ -1,22 +1,27 @@
 "use client";
-import {GithubFilled, InfoCircleFilled, LogoutOutlined, QuestionCircleFilled, SearchOutlined,} from "@ant-design/icons";
-import {ProLayout} from "@ant-design/pro-components";
-import {Dropdown, Input, message} from "antd";
+import {
+  GithubFilled,
+  InfoCircleFilled,
+  LogoutOutlined,
+  QuestionCircleFilled,
+} from "@ant-design/icons";
+import { ProLayout } from "@ant-design/pro-components";
+import { Dropdown, message } from "antd";
 import React from "react";
 import Image from "next/image";
-import {usePathname, useRouter} from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import GlobalFooter from "@/components/GlobalFooter";
-import {menus} from "../../../config/menu";
-import {AppDispatch, RootState} from "@/stores";
-import {useDispatch, useSelector} from "react-redux";
+import { menus } from "../../../config/menu";
+import { AppDispatch, RootState } from "@/stores";
+import { useDispatch, useSelector } from "react-redux";
 import getAccessibleMenus from "@/access/menuAccess";
-import "./index.css";
-import {userLogoutUsingPost} from "@/api/userController";
-import {values} from "lodash-es";
-import {setLoginUser} from "@/stores/loginUser";
-import {DEFAULT_USER} from "@/constants/user";
+import { userLogoutUsingPost } from "@/api/userController";
+import { values } from "lodash-es";
+import { setLoginUser } from "@/stores/loginUser";
+import { DEFAULT_USER } from "@/constants/user";
 import SearchInput from "@/layouts/BasicLayout/components/SearchInput";
+import "./index.css";
 
 interface Props {
   children: React.ReactNode;
@@ -42,7 +47,7 @@ export default function BasicLayout({ children }: Props) {
     try {
       const res = await userLogoutUsingPost(values);
       if (res.data) {
-        messageApi.success("已退出登录")
+        messageApi.success("已退出登录");
         dispatch(setLoginUser(DEFAULT_USER));
         router.push("/user/login");
       }
@@ -79,7 +84,14 @@ export default function BasicLayout({ children }: Props) {
           title: loginUser.userName || "亦忻",
           render: (props, dom) => {
             if (!loginUser.id) {
-              return <Link href={"/user/login"}  style={{color: "rgba(0,0,0,0.45)"}}>{dom}</Link>;
+              return (
+                <Link
+                  href={"/user/login"}
+                  style={{ color: "rgba(0,0,0,0.45)" }}
+                >
+                  {dom}
+                </Link>
+              );
             }
             return (
               <Dropdown
@@ -110,13 +122,14 @@ export default function BasicLayout({ children }: Props) {
             <SearchInput key="serch" />,
             <InfoCircleFilled key="InfoCircleFilled" />,
             <QuestionCircleFilled key="QuestionCircleFilled" />,
-            <a
+            <Link
               href="https://github.com/NicknamePetName/interview-front"
               key="github"
               target="_blank"
+              style={{width: 28, height: 28, position: "relative",padding: 6}}
             >
-              <GithubFilled key="GithubFilled" />
-            </a>,
+              <GithubFilled key="GithubFilled" style={{position: "absolute", top: 6, left: 6}}/>
+            </Link>,
           ];
         }}
         headerTitleRender={(logo, title, _) => {
@@ -131,7 +144,7 @@ export default function BasicLayout({ children }: Props) {
         footerRender={() => {
           return <GlobalFooter />;
         }}
-        onMenuHeaderClick={(e) => console.log(e)}
+        onMenuHeaderClick={(e) => {}}
         // 定义有哪些菜单
         menuDataRender={() => {
           return getAccessibleMenus(loginUser, menus);
@@ -140,10 +153,10 @@ export default function BasicLayout({ children }: Props) {
         menuItemRender={(item, dom) => {
           const isCurrentPath = item.path && pathname === item.path;
           return (
-              <Link href={item.path || "/"} target={item.target}>
-                {isCurrentPath ? <span className="selected">{dom}</span> : dom}
-              </Link>
-          )
+            <Link href={item.path || "/"} target={item.target}>
+              {isCurrentPath ? <span className="selected">{dom}</span> : dom}
+            </Link>
+          );
         }}
       >
         {children}

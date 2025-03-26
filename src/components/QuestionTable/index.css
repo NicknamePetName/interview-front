@@ -18,6 +18,10 @@
 .question-table .ant-pro-card.css-dev-only-do-not-override-240cud .ant-table-thead .ant-table-cell {
   background: rgb(219, 227, 255);
 }
+.question-table th.ant-table-cell,
+.question-table td.ant-table-cell {
+  padding-left: 15px !important;
+}
 .question-table .two-line-ellipsis {
   display: -webkit-box;
   -webkit-line-clamp: 2; /* 限制显示两行 */

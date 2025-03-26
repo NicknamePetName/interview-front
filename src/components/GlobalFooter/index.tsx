@@ -14,7 +14,7 @@ export default function GlobeFooter() {
       <div>© {currentYear} 亦忻面试刷题平台</div>
       <div>
         <a href="https://interview.cannianyixin.cn" target="_blank">
-          作者：无锡大学&优课达 — 亦忻
+          作者：无锡大学 — 亦忻
         </a>
       </div>
     </div>

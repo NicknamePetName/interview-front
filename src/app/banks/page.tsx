@@ -17,7 +17,7 @@ export default async function BanksPage() {
     const res = await listQuestionBankVoByPageUsingPost({
       pageSize,
       sortField: "createTime",
-      sortOrder: "desc",
+      sortOrder: "descend",
     });
     questionBankList = res.data.records ?? [];
   } catch (e) {

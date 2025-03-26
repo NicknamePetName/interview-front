@@ -53,36 +53,37 @@ const UpdateModal: React.FC<Props> = (props) => {
   }
 
   return (
-    <div className="update-model">
-      {contextHolder}
-      <Modal
-        destroyOnClose
-        title={"更新"}
-        open={visible}
-        footer={null}
-        onCancel={() => {
-          onCancel?.();
-        }}
-      >
-        <ProTable
-          type="form"
-          columns={columns}
-          form={{
-            initialValues: initValues,
-          }}
-          onSubmit={async (values: API.QuestionAddRequest) => {
-            const success = await handleUpdate({
-              ...values,
-              id: oldData?.id,
-            });
-            if (success) {
-              onSubmit?.(values);
-            }
-          }}
-        />
-      </Modal>
-    </div>
+      <div className="update-model">
+        {contextHolder}
+        <Modal
+            destroyOnClose
+            title={"更新"}
+            open={visible}
+            footer={null}
+            onCancel={() => {
+              onCancel?.();
+            }}
+        >
+          <ProTable
+              type="form"
+              columns={columns}
+              form={{
+                initialValues: initValues,
+              }}
+              onSubmit={async (values: API.QuestionAddRequest) => {
+                const success = await handleUpdate({
+                  ...values,
+                  id: oldData?.id,
+                });
+                if (success) {
+                  onSubmit?.(values);
+                }
+              }}
+          />
+        </Modal>
+      </div>
   );
 };
 
 export default UpdateModal;
+

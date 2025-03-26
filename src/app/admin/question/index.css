@@ -21,4 +21,8 @@
   text-align: center;
 }
 
+.bytemd.bytemd-split.bytemd-fullscreen {
+  z-index: 99999;
+}
+
 /*# sourceMappingURL=index.css.map */

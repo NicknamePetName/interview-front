@@ -13,6 +13,7 @@ import React, { useRef, useState } from "react";
 import "./index.css";
 import TagList from "@/components/TagList";
 import MdEditor from "@/components/MdEditor";
+import UpdateBankModal from "./components/UpdateBankModal";
 
 /**
  * 题目管理页面
@@ -25,6 +26,8 @@ const QuestionAdminPage: React.FC = () => {
   const [createModalVisible, setCreateModalVisible] = useState<boolean>(false);
   // 是否显示更新窗口
   const [updateModalVisible, setUpdateModalVisible] = useState<boolean>(false);
+  // 是否显示更新所属题库窗口
+  const [updateBankModalVisible, setUpdateBankModalVisible] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
   const actionRef = useRef<ActionType>();
@@ -63,12 +66,20 @@ const QuestionAdminPage: React.FC = () => {
       valueType: "text",
       hideInForm: true,
       sorter: true,
+      ellipsis: true,
+    },
+    {
+      title: "所属题库",
+      dataIndex: "questionBankId",
+      hideInForm: true,
+      hideInTable: true,
     },
     {
       title: "标题",
       dataIndex: "title",
       valueType: "text",
       width: 180,
+      ellipsis: true,
     },
     {
       title: "内容",
@@ -164,6 +175,14 @@ const QuestionAdminPage: React.FC = () => {
           >
             修改
           </Typography.Link>
+          <Typography.Link
+              onClick={() => {
+                setCurrentRow(record);
+                setUpdateBankModalVisible(true);
+              }}
+          >
+            题库
+          </Typography.Link>
           <Popconfirm
             title="删除题目"
             description="是否删除此题目？"
@@ -186,6 +205,9 @@ const QuestionAdminPage: React.FC = () => {
           headerTitle={"查询表格"}
           actionRef={actionRef}
           rowKey="id"
+          // scroll={{
+          //   x: true,
+          // }}
           search={{
             labelWidth: "auto",
           }}
@@ -244,6 +266,13 @@ const QuestionAdminPage: React.FC = () => {
           onCancel={() => {
             setUpdateModalVisible(false);
           }}
+        />
+        <UpdateBankModal
+            visible={updateBankModalVisible}
+            questionId={currentRow?.id}
+            onCancel={() => {
+              setUpdateBankModalVisible(false);
+            }}
         />
       </PageContainer>
     </div>

@@ -6,6 +6,7 @@ import React, { useRef, useState } from "react";
 import TagList from "@/components/TagList";
 import "./index.css";
 import { TablePaginationConfig } from "antd";
+import Link from "next/link";
 
 interface Props {
   // 默认值，用于展示服务端渲染的数据
@@ -49,11 +50,15 @@ const QuestionTable = (props: Props) => {
       title: "标题",
       dataIndex: "title",
       valueType: "text",
+      render: (_, record) => {
+        return <Link href={`/question/${record.id}`}>{record.title}</Link>;
+      },
     },
     {
       title: "标签",
-      dataIndex: "tags",
+      dataIndex: "tagList",
       valueType: "select",
+      width: 300,
       fieldProps: {
         mode: "tags",
       },
@@ -68,8 +73,7 @@ const QuestionTable = (props: Props) => {
         Vue: { text: "Vue" },
       },
       render: (_, record) => {
-        const tagList = JSON.parse(record.tags || "[]");
-        return <TagList tagList={tagList} />;
+        return <TagList tagList={record.tagList} />;
       },
     },
   ];
@@ -79,7 +83,6 @@ const QuestionTable = (props: Props) => {
       <ProTable<API.QuestionVO>
         rowKey="id"
         actionRef={actionRef}
-        size="large"
         search={{
           labelWidth: "auto",
           span: 8,
