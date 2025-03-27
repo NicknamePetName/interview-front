@@ -31,7 +31,7 @@ export default async function QuestionsPage({ searchParams }: { searchParams: Se
     console.error("获取题目列表失败：" + (e as Error).message);
   }
   return (
-    <div id="questionsPage" className="max-width-content">
+    <div id="questions-page" className="max-width-content">
       <Title level={3}>题目大全</Title>
       <QuestionTable
         defaultQuestionList={questionList}

@@ -134,7 +134,7 @@ const QuestionBankAdminPage: React.FC = () => {
   ];
 
   return (
-    <div id="admin-questionBank-page">
+    <div id="admin-question-bank-page">
       {contextHolder}
       <PageContainer>
         <ProTable<API.QuestionBank>

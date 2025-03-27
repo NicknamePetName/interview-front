@@ -1,5 +1,6 @@
-#admin-question-bank-page {
-  margin-bottom: -50px;
+#user-center-page {
+  width: 100%;
+  margin-bottom: -65px;
   // 输入框
   .ant-input-affix-wrapper.css-dev-only-do-not-override-240cud.ant-input-outlined {
     background: rgba(255, 255, 255, 0.5);
@@ -7,7 +8,6 @@
 
   .ant-pro-card.css-dev-only-do-not-override-240cud {
     background: rgba(234, 244, 249, 0.7);
-    text-align: center;
 
     .ant-table-tbody {
       background: rgb(229, 233, 250);
@@ -15,17 +15,13 @@
 
       .ant-table-cell {
         border-bottom: 1px solid #FFFFFF;
-        text-align: center;
-
       }
     }
 
     .ant-table-thead {
       .ant-table-cell {
         background: rgb(219, 227, 255);
-        text-align: center;
       }
     }
   }
 }
-

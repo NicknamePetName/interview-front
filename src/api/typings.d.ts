@@ -11,6 +11,12 @@ declare namespace API {
     message?: string;
   };
 
+  type BaseResponseListInt_ = {
+    code?: number;
+    data?: number[];
+    message?: string;
+  };
+
   type BaseResponseLoginUserVO_ = {
     code?: number;
     data?: LoginUserVO;
@@ -36,16 +42,12 @@ declare namespace API {
   };
 
   type BaseResponsePageQuestion_ = {
-    total: any;
-    records: never[];
     code?: number;
     data?: PageQuestion_;
     message?: string;
   };
 
   type BaseResponsePageQuestionBank_ = {
-    total: any;
-    records: never[];
     code?: number;
     data?: PageQuestionBank_;
     message?: string;
@@ -58,30 +60,24 @@ declare namespace API {
   };
 
   type BaseResponsePageQuestionBankQuestionVO_ = {
-    records: never[];
     code?: number;
     data?: PageQuestionBankQuestionVO_;
     message?: string;
   };
 
   type BaseResponsePageQuestionBankVO_ = {
-    records: never[];
     code?: number;
     data?: PageQuestionBankVO_;
     message?: string;
   };
 
   type BaseResponsePageQuestionVO_ = {
-    total: number;
-    records: never[];
     code?: number;
     data?: PageQuestionVO_;
     message?: string;
   };
 
   type BaseResponsePageUser_ = {
-    total: any;
-    records: never[];
     code?: number;
     data?: PageUser_;
     message?: string;
@@ -106,17 +102,12 @@ declare namespace API {
   };
 
   type BaseResponseQuestionBankVO_ = {
-    questionPage: any;
-    description: ReactNode;
-    title: ReactNode;
-    picture: ReactNode;
     code?: number;
     data?: QuestionBankVO;
     message?: string;
   };
 
   type BaseResponseQuestionVO_ = {
-    id: string;
     code?: number;
     data?: QuestionVO;
     message?: string;
@@ -188,6 +179,11 @@ declare namespace API {
   type getUserByIdUsingGETParams = {
     /** id */
     id?: number;
+  };
+
+  type getUserSignInRecordUsingGETParams = {
+    /** year */
+    year?: number;
   };
 
   type getUserVOByIdUsingGETParams = {
@@ -422,7 +418,6 @@ declare namespace API {
   };
 
   type Question = {
-    tagList: string[] | undefined;
     answer?: string;
     content?: string;
     createTime?: string;
@@ -561,7 +556,7 @@ declare namespace API {
     id?: number;
     picture?: string;
     priority?: number;
-    questionPage?: PageQuestion_;
+    questionPage?: PageQuestionVO_;
     reviewMessage?: string;
     reviewStatus?: number;
     reviewTime?: string;

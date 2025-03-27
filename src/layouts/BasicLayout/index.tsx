@@ -3,7 +3,7 @@ import {
   GithubFilled,
   InfoCircleFilled,
   LogoutOutlined,
-  QuestionCircleFilled,
+  QuestionCircleFilled, UserOutlined,
 } from "@ant-design/icons";
 import { ProLayout } from "@ant-design/pro-components";
 import { Dropdown, message } from "antd";
@@ -48,6 +48,7 @@ export default function BasicLayout({ children }: Props) {
       const res = await userLogoutUsingPost(values);
       if (res.data) {
         messageApi.success("已退出登录");
+        localStorage.clear();
         dispatch(setLoginUser(DEFAULT_USER));
         router.push("/user/login");
       }
@@ -98,6 +99,11 @@ export default function BasicLayout({ children }: Props) {
                 menu={{
                   items: [
                     {
+                      key: "userCenter",
+                      icon: <UserOutlined />,
+                      label: "个人中心",
+                    },
+                    {
                       key: "logout",
                       icon: <LogoutOutlined />,
                       label: "退出登录",
@@ -107,6 +113,8 @@ export default function BasicLayout({ children }: Props) {
                     const { key } = event;
                     if (key === "logout") {
                       await userLogout();
+                    } else if (key === "userCenter") {
+                      router.push("/user/center");
                     }
                   },
                 }}

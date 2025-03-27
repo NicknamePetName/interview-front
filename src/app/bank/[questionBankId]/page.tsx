@@ -12,7 +12,7 @@ import QuestionList from "@/components/QuestionList";
  * @constructor
  */
 export default async function BankPage({ params }) {
-  const { questionBankId } = params;
+  const { questionBankId } = await params;
   let bank = undefined;
 
   try {
