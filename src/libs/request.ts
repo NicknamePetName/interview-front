@@ -2,7 +2,7 @@ import axios from "axios";
 
 // 创建 Axios 示例
 const myAxios = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "http://localhost:8100",
   timeout: 10000,
   withCredentials: true, // 请求登录，开启 Cookie 的自动携带
 });
