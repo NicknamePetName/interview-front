@@ -116,7 +116,7 @@ export async function listQuestionVoByPageSentinelUsingPost(
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponsePageQuestionVO_>(
-    "/api/question/list/page/vo/
+    "/api/question/list/page/vo/sentinel",
     {
       method: "POST",
       headers: {
