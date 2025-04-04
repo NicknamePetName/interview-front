@@ -5,7 +5,6 @@ import TagList from "@/components/TagList";
 import MdViewer from "@/components/MdViewer";
 import "./index.css";
 import useAddUserSignInRecord from "@/hooks/useAddUserSignInRecord";
-import {useState} from "react";
 
 interface Props {
   question?: API.QuestionVO[];
@@ -21,7 +20,6 @@ const QuestionCard = (props: Props) => {
 
   // 签到
   useAddUserSignInRecord();
-
 
   return (
     <div className="question-card">

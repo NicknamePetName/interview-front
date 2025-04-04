@@ -29,10 +29,11 @@ myAxios.interceptors.response.use(
     if (data.code === 40100) {
       // 不是获取用户信息接口，或者不是登录页面，则跳转到登录页面
       if (
-        !response.request.responseURL.includes("user/get/login") &&
+        // !response.request.responseURL.includes("user/get/login") &&
         !window.location.pathname.includes("/user/login")
       ) {
-        window.location.href = `/user/login?redirect=${window.location.href}`;
+        // window.location.href = `/user/login?redirect=${window.location.href}`;
+        window.location.href = `/user/login`;
       }
     } else if (data.code !== 0) {
       // 其他错误

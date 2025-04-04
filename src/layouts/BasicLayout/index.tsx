@@ -48,7 +48,7 @@ export default function BasicLayout({ children }: Props) {
       const res = await userLogoutUsingPost(values);
       if (res.data) {
         messageApi.success("已退出登录");
-        localStorage.clear();
+        localStorage.clear(); // 清除localStorage
         dispatch(setLoginUser(DEFAULT_USER));
         router.push("/user/login");
       }
