@@ -19,6 +19,7 @@ export default async function BankQuestionPage({ params }) {
   // 获取当前请求的 Cookie
   const headersList = await headers(); // 使用 await 解析 headers
   const cookie = headersList.get("cookie");
+  let errorMES: string = "获取题库列表失败，请刷新重试";
   // 获取题库详情
   let bank = undefined;
   try {
@@ -35,6 +36,7 @@ export default async function BankQuestionPage({ params }) {
     );
     bank = res.data;
   } catch (e) {
+    errorMES = (e as Error).message || "获取题库列表失败，请刷新重试";
     console.error("获取题库列表失败：" + (e as Error).message);
   }
 
@@ -49,7 +51,7 @@ export default async function BankQuestionPage({ params }) {
           paddingTop: "18%",
         }}
       >
-        获取题库列表失败，请刷新重试
+          {errorMES !== "window is not defined" ? errorMES : "未登录，请登录后重试" }
       </div>
     );
   }
@@ -67,6 +69,7 @@ export default async function BankQuestionPage({ params }) {
     );
     question = res.data;
   } catch (e) {
+    errorMES = (e as Error).message || "获取题目详情失败，请刷新重试";
     console.error("获取题目详情失败：" + (e as Error).message);
   }
 
@@ -81,7 +84,7 @@ export default async function BankQuestionPage({ params }) {
           paddingTop: "18%",
         }}
       >
-        获取题目详情失败，请刷新重试
+          {errorMES !== "window is not defined" ? errorMES : "未登录，请登录后重试" }
       </div>
     );
   }

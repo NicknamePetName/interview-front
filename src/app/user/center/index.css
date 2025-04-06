@@ -1,6 +1,8 @@
+@charset "UTF-8";
 #user-center-page {
   width: 100%;
   margin-bottom: -65px;
+  /* 自定义 Segmented 组件的选中项颜色 */
 }
 #user-center-page .ant-input-affix-wrapper.css-dev-only-do-not-override-240cud.ant-input-outlined {
   background: rgba(255, 255, 255, 0.5);
@@ -17,6 +19,10 @@
 }
 #user-center-page .ant-pro-card.css-dev-only-do-not-override-240cud .ant-table-thead .ant-table-cell {
   background: rgb(219, 227, 255);
+}
+#user-center-page .custom-segmented .ant-segmented-item-selected {
+  background-color: rgba(103, 13, 243, 0.8); /* 选中项的背景颜色 */
+  color: white; /* 选中项的文字颜色 */
 }
 
 /*# sourceMappingURL=index.css.map */

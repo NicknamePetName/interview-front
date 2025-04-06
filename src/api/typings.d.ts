@@ -206,6 +206,11 @@ declare namespace API {
     userId?: number;
   };
 
+  type getQuestionVOByIdHomeUsingGETParams = {
+    /** id */
+    id?: number;
+  };
+
   type getQuestionVOByIdUsingGETParams = {
     /** id */
     id?: number;
@@ -228,12 +233,17 @@ declare namespace API {
 
   type LoginUserVO = {
     createTime?: string;
+    email?: string;
+    expertiseDirection?: string;
+    grade?: string;
     id?: number;
+    phoneNumber?: string;
     updateTime?: string;
     userAvatar?: string;
     userName?: string;
     userProfile?: string;
     userRole?: string;
+    workExperience?: string;
   };
 
   type OrderItem = {
@@ -482,6 +492,11 @@ declare namespace API {
     title?: string;
   };
 
+  type QuestionAIGenerateRequest = {
+    number?: number;
+    questionType?: string;
+  };
+
   type QuestionBank = {
     createTime?: string;
     description?: string;
@@ -678,9 +693,13 @@ declare namespace API {
   type User = {
     createTime?: string;
     editTime?: string;
+    email?: string;
+    expertiseDirection?: string;
+    grade?: string;
     id?: number;
     isDelete?: number;
     mpOpenId?: string;
+    phoneNumber?: string;
     unionId?: string;
     updateTime?: string;
     userAccount?: string;
@@ -692,6 +711,7 @@ declare namespace API {
     vipCode?: string;
     vipExpireTime?: string;
     vipNumber?: number;
+    workExperience?: string;
   };
 
   type UserAddRequest = {
@@ -700,6 +720,17 @@ declare namespace API {
     userName?: string;
     userProfile?: string;
     userRole?: string;
+  };
+
+  type UserEditRequest = {
+    email?: string;
+    expertiseDirection?: string;
+    grade?: string;
+    phoneNumber?: string;
+    userAvatar?: string;
+    userName?: string;
+    userProfile?: string;
+    workExperience?: string;
   };
 
   type userLoginByWxOpenUsingGETParams = {

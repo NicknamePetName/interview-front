@@ -162,6 +162,7 @@ const QuestionAdminPage: React.FC = () => {
         Spring: { text: "Spring" },
         SpringBoot: { text: "SpringBoot" },
         Vue: { text: "Vue" },
+        "待审核": { text: "待审核" },
       },
       render: (_, record) => {
         const tagList = JSON.parse(record.tags || "[]");
@@ -315,6 +316,15 @@ const QuestionAdminPage: React.FC = () => {
           }}
           toolBarRender={() => [
             <Button
+                type="primary"
+                ghost
+                key="primary"
+                href="/admin/question/ai"
+                target="_blank"
+            >
+              <PlusOutlined /> AI 生成题目
+            </Button>,
+            <Button
               type="primary"
               key="primary"
               onClick={() => {
@@ -325,8 +335,8 @@ const QuestionAdminPage: React.FC = () => {
             </Button>,
           ]}
           request={async (params, sort, filter) => {
-            const sortField = Object.keys(sort)?.[0];
-            const sortOrder = sort?.[sortField] ?? undefined;
+            const sortField = Object.keys(sort)?.[0] || "createTime";
+            const sortOrder = sort?.[sortField] || "descend";
 
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error

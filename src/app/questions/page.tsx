@@ -1,6 +1,6 @@
 "use server";
 import Title from "antd/es/typography/Title";
-import {listQuestionVoByPageUsingPost, searchQuestionVoByPageUsingPost} from "@/api/questionController";
+import {searchQuestionVoByPageUsingPost} from "@/api/questionController";
 import QuestionTable from "@/components/QuestionTable";
 import "./index.css";
 

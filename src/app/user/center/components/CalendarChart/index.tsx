@@ -58,7 +58,7 @@ const CalendarChart = (props: Props) => {
       max: 1,
       inRange: {
         // 颜色从灰色到浅绿色
-        color: ["#edf0f3", "#49c06a"],
+        color: ["#edf0f3", "#02ed43"],
       },
     },
     calendar: {
@@ -76,7 +76,7 @@ const CalendarChart = (props: Props) => {
       splitLine: {
         show: true,
         lineStyle: {
-          color: "rgba(255,255,255,0)",
+          color: "rgba(130,0,253,0.5)",
         },
       },
       itemStyle: {

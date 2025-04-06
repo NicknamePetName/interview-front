@@ -3,7 +3,7 @@ import Title from "antd/es/typography/Title";
 import {Divider, Flex} from "antd";
 import Link from "next/link";
 import {listQuestionBankVoByPageUsingPost} from "@/api/questionBankController";
-import {listQuestionVoByPageUsingPost,} from "@/api/questionController";
+import {listQuestionVoByPageSentinelUsingPost,} from "@/api/questionController";
 import "./index.css";
 import QuestionBankList from "@/components/QuestionBankList";
 import QuestionList from "@/components/QuestionList";
@@ -28,7 +28,7 @@ export default async function HomePage() {
   }
 
   try {
-    const res = await listQuestionVoByPageUsingPost({
+    const res = await listQuestionVoByPageSentinelUsingPost({
       pageSize: 12,
       sortField: "createTime",
       sortOrder: "descend",

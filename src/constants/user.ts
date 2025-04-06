@@ -7,3 +7,16 @@ export const DEFAULT_USER: API.LoginUserVO = {
   userAvatar: "/assets/notLoginUser.png",
   userRole: ACCESS_ENUM.NOT_LOGIN,
 };
+
+// 用户角色枚举
+export const USER_ROLE_ENUM = {
+  USER: "USER",
+  ADMIN: "ADMIN",
+  VIP: "VIP",
+};
+
+// 用户角色 => 文本映射
+export const USER_ROLE_TEXT_MAP = {
+  USER: "普通用户",
+  ADMIN: "管理员",
+};

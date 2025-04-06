@@ -24,4 +24,9 @@
       }
     }
   }
+  /* 自定义 Segmented 组件的选中项颜色 */
+  .custom-segmented .ant-segmented-item-selected {
+    background-color: rgba(103, 13, 243,0.8); /* 选中项的背景颜色 */
+    color: white; /* 选中项的文字颜色 */
+  }
 }

@@ -166,8 +166,8 @@ const UserAdminPage: React.FC = () => {
             </Button>,
           ]}
           request={async (params, sort, filter) => {
-            const sortField = Object.keys(sort)?.[0];
-            const sortOrder = sort?.[sortField] ?? undefined;
+            const sortField = Object.keys(sort)?.[0] || "createTime";
+            const sortOrder = sort?.[sortField] || "descend";
 
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
