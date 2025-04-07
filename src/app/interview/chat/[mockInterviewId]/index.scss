@@ -1,6 +1,8 @@
 #interview-room-page {
-  padding: 20px;
+  padding: 0 20px;
   margin: 0 auto;
+  margin-top: -10px;
+  margin-bottom: -15px;
   max-width: 1200px;
   width: 70%;
 
@@ -18,7 +20,9 @@
   }
 
   .message-area {
-    margin-bottom: 48px;
+    background: rgba(255,255,255,0);
+    border: 1px solid #d9d9d9;
+    margin-bottom: 12px;
     height: 60vh;
     overflow-y: auto;
   }
@@ -43,7 +47,7 @@
   }
 
   .message-bubble.ai {
-    background: #f0f2f5;
+    background: rgba(255,255,255,0.3);
     border: 1px solid #d9d9d9;
   }
 
@@ -55,8 +59,7 @@
   .input-area {
     display: flex;
     gap: 12px;
-    margin-top: 24px;
-
+    background: rgba(255,255,255,0.3);
     textarea {
       flex: 1;
     }

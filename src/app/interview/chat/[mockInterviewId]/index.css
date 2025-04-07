@@ -1,6 +1,8 @@
 #interview-room-page {
-  padding: 20px;
+  padding: 0 20px;
   margin: 0 auto;
+  margin-top: -10px;
+  margin-bottom: -15px;
   max-width: 1200px;
   width: 70%;
 }
@@ -16,7 +18,9 @@
   margin-bottom: 24px;
 }
 #interview-room-page .message-area {
-  margin-bottom: 48px;
+  background: rgba(255, 255, 255, 0);
+  border: 1px solid #d9d9d9;
+  margin-bottom: 12px;
   height: 60vh;
   overflow-y: auto;
 }
@@ -36,7 +40,7 @@
   text-align: right;
 }
 #interview-room-page .message-bubble.ai {
-  background: #f0f2f5;
+  background: rgba(255, 255, 255, 0.3);
   border: 1px solid #d9d9d9;
 }
 #interview-room-page .message-bubble.user {
@@ -46,7 +50,7 @@
 #interview-room-page .input-area {
   display: flex;
   gap: 12px;
-  margin-top: 24px;
+  background: rgba(255, 255, 255, 0.3);
 }
 #interview-room-page .input-area textarea {
   flex: 1;
