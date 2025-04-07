@@ -17,8 +17,8 @@ export const menus = [
     name: "题目",
   },
   {
-    name: "面试",
-    path: "https://interview.cannianyixin.cn",
+    name: "AI 面试",
+    path: "/interview/add",
     target: "_blank",
   },
   {

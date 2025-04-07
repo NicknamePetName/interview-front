@@ -43,13 +43,13 @@ export default async function BankPage({ params }) {
       <Card style={{ background: "rgba(230,243,250,0.5)" }}>
         <Meta
           style={{ background: "rgba(255,255,255,0)" }}
-          avatar={<Avatar src={bank.picture} />}
+          avatar={<Avatar src={bank.picture || "/assets/logo.png"} />}
           title={<Title level={3}>{bank.title}</Title>}
           description={
             <>
               <Paragraph
                 type="secondary"
-                ellipsis={{ rows: 1 }}
+                // ellipsis={{ rows: 1 }} // 题库页面，全部展示描述
                 style={{
                   marginTop: -18,
                   marginBottom: 10,
