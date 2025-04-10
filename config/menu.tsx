@@ -44,6 +44,16 @@ export const menus = [
       },
     ],
   },
+  {
+    path: "https://www.laoyujianli.com/share/nickname",
+    name: "开发者简历",
+    target: "_blank",
+  },
+  {
+    path: "https://www.cwxu.edu.cn",
+    name: "校园官网",
+    target: "_blank",
+  },
 ] as MenuDataItem[];
 
 // 根据路径查找所有菜单

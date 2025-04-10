@@ -131,7 +131,7 @@ export default function BasicLayout({ children }: Props) {
             <InfoCircleFilled key="InfoCircleFilled" />,
             <QuestionCircleFilled key="QuestionCircleFilled" />,
             <Link
-              href="https://github.com/NicknamePetName/interview-front"
+              href="https://github.com/NicknamePetName"
               key="github"
               target="_blank"
               style={{width: 28, height: 28, position: "relative",padding: 6}}

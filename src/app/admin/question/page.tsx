@@ -9,7 +9,7 @@ import {
 import { PlusOutlined } from "@ant-design/icons";
 import type { ActionType, ProColumns } from "@ant-design/pro-components";
 import { PageContainer, ProTable } from "@ant-design/pro-components";
-import { Button, message, Popconfirm, Space, Table, Typography } from "antd";
+import {Button, message, Popconfirm, Space, Table, Tag, Typography} from "antd";
 import React, { useRef, useState } from "react";
 import TagList from "@/components/TagList";
 import MdEditor from "@/components/MdEditor";
@@ -88,6 +88,7 @@ const QuestionAdminPage: React.FC = () => {
       });
       hide();
       messageApi.success("操作成功");
+      actionRef?.current?.reload();
     } catch (e) {
       hide();
       messageApi.error("操作失败，" + (e as Error).message);
@@ -167,6 +168,34 @@ const QuestionAdminPage: React.FC = () => {
       render: (_, record) => {
         const tagList = JSON.parse(record.tags || "[]");
         return <TagList tagList={tagList} />;
+      },
+    },
+    {
+      title: "审核状态",
+      dataIndex: "reviewStatus",
+      valueType: "select",
+      hideInTable: true,
+      valueEnum: {
+        0: { text: "待审核" },
+        1: { text: "通过" },
+        2: { text: "拒绝" },
+      },
+      render: (_, record) => {
+        let tag;
+        switch (record.reviewStatus) {
+          case 0:
+            tag = "待审核";
+            break;
+          case 1:
+            tag = "通过";
+            break;
+          case 2:
+            tag = "拒绝";
+            break;
+          default:
+            tag = "未知状态";
+        }
+        return <Tag>{tag}</Tag>;
       },
     },
     {
@@ -316,11 +345,11 @@ const QuestionAdminPage: React.FC = () => {
           }}
           toolBarRender={() => [
             <Button
-                type="primary"
-                ghost
-                key="primary"
-                href="/admin/question/ai"
-                target="_blank"
+              type="primary"
+              ghost
+              key="primary"
+              href="/admin/question/ai"
+              target="_blank"
             >
               <PlusOutlined /> AI 生成题目
             </Button>,

@@ -13,7 +13,7 @@ export default function GlobeFooter() {
     <div className="global-footer">
       <div>© {currentYear} 亦忻面试刷题平台</div>
       <div>
-        <a href="https://interview.cannianyixin.cn" target="_blank">
+        <a href="https://cannianyixin.cn" target="_blank">
           作者：无锡大学 — 亦忻
         </a>
       </div>

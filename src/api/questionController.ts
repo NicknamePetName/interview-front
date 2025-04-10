@@ -147,6 +147,24 @@ export async function listQuestionVoByPageSentinelUsingPost(
   );
 }
 
+/** listQuestionVOByPageSentinelAll POST /api/question/list/page/vo/sentinel/all */
+export async function listQuestionVoByPageSentinelAllUsingPost(
+  body: API.QuestionQueryRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponsePageQuestionVO_>(
+    "/api/question/list/page/vo/sentinel/all",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: body,
+      ...(options || {}),
+    }
+  );
+}
+
 /** listMyQuestionVOByPage POST /api/question/my/list/page/vo */
 export async function listMyQuestionVoByPageUsingPost(
   body: API.QuestionQueryRequest,
