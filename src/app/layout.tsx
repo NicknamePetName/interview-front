@@ -59,6 +59,40 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // window.location.href = "https://theajack.github.io/disable-devtool/404.html?h=www.interview.cannianyixin.cn";
+  useEffect(() => {
+    // 检测开发者工具是否被打开
+    function redirect404() {
+      window.location.href = "https://theajack.github.io/disable-devtool/404.html?h=www.interview.cannianyixin.cn";
+    }
+
+    // 定义一个变量来存储定时器的引用
+    let handler: number | undefined;
+
+    // 定义一个函数来检测开发者工具是否被打开
+    function detectDevTools() {
+      handler = setInterval(() => {
+        const before = new Date();
+        debugger; // 触发调试器
+        const after = new Date();
+        const cost = after.getTime() - before.getTime();
+        if (cost > 3000) {
+          redirect404();
+          clearInterval(handler); // 清除定时器
+        }
+      }, 1000);
+    }
+
+    // 调用检测函数
+    detectDevTools();
+
+    // 清理定时器
+    return () => {
+      if (handler) {
+        clearInterval(handler); // 确保在组件卸载时清除定时器
+      }
+    };
+  }, []);
   return (
     <html lang="zh">
       <body>

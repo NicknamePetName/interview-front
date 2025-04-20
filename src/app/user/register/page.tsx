@@ -7,10 +7,10 @@ import {
   ProFormText,
 } from "@ant-design/pro-components";
 import { message, Tabs } from "antd";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { userRegisterUsingPost } from "@/api/userController";
+import {getLoginUserUsingGet, userRegisterUsingPost} from "@/api/userController";
 import { ProForm } from "@ant-design/pro-form/lib";
 import "./index.css";
 import { useRouter } from "next/navigation";
@@ -29,7 +29,24 @@ const UserRegisterPage: React.FC = () => {
   ];
   const [form] = ProForm.useForm();
   const router = useRouter();
-  /**
+
+    // 判断是否登录，已登录用户直接跳转首页
+    useEffect(() => {
+        const checkLoginStatus = async () => {
+            try {
+                const res = await getLoginUserUsingGet();
+                if (res.code === 0 && res.data) {
+                    router.replace('/');
+                }
+            } catch (error) {
+                console.error('Failed to get login user:', error);
+            }
+        };
+
+        checkLoginStatus();
+    }, []); // 空依赖数组确保只在组件挂载时执行一次
+
+    /**
    * 提交
    */
   const onFinish = async (values: API.UserRegisterRequest) => {

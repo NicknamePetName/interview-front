@@ -14,10 +14,10 @@ import {
   ProFormText,
 } from "@ant-design/pro-components";
 import { message, Space, Tabs } from "antd";
-import React, { CSSProperties, useState } from "react";
+import React, {CSSProperties, useEffect, useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { userLoginUsingPost } from "@/api/userController";
+import {getLoginUserUsingGet, userLoginUsingPost} from "@/api/userController";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/stores";
 import { setLoginUser } from "@/stores/loginUser";
@@ -65,6 +65,22 @@ const UserLoginPage: React.FC = () => {
     verticalAlign: "middle",
     cursor: "pointer",
   };
+
+  // 判断是否登录，已登录用户直接跳转首页
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      try {
+        const res = await getLoginUserUsingGet();
+        if (res.code === 0 && res.data) {
+          router.replace('/');
+        }
+      } catch (error) {
+        console.error('Failed to get login user:', error);
+      }
+    };
+
+    checkLoginStatus();
+  }, []); // 空依赖数组确保只在组件挂载时执行一次
 
   return (
     <div id="user-login-page">
